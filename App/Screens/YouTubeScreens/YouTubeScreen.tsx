@@ -4,6 +4,7 @@ import styles from './YouTubeScreenStyle';
 import YouTube from 'react-native-youtube';
 import axios from 'axios';
 import {Colors} from '@themes';
+import {ItemComponent} from '@components';
 
 export interface Video {
   description: string;
@@ -35,27 +36,14 @@ export const YouTubeScreen: React.FunctionComponent = () => {
   };
   const renderVideoItem = (item: Video, index: number) => {
     return (
-      <TouchableOpacity
-        style={[
-          styles.itemContainer,
-          {backgroundColor: index % 2 ? Colors.Border : Colors.White},
-        ]}
-        onPress={() => setVideoId(item.embeddedUrl)}>
-        <Image
-          source={{uri: item.imageUrl}}
-          style={[
-            styles.itemImage,
-            {
-              borderWidth: item.embeddedUrl === videoId ? 5 : 0,
-              borderColor: Colors.Blue,
-            },
-          ]}
-        />
-        <View style={styles.textContainer}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.description}>{item.description}</Text>
-        </View>
-      </TouchableOpacity>
+      <ItemComponent
+        description={item.description}
+        image={item.imageUrl}
+        title={item.name}
+        isActive={item.embeddedUrl === videoId}
+        isHighLight={index % 2 === 0}
+        onClick={() => setVideoId(item.embeddedUrl)}
+      />
     );
   };
   return (

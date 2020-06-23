@@ -1,1 +1,1 @@
-export * from './AvatarComponent/AvatarComponent';
+export * from './ItemComponent/ItemComponent'
