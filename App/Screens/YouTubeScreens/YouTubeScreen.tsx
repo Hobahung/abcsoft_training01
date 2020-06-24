@@ -4,7 +4,7 @@ import styles from './YouTubeScreenStyle';
 import YouTube from 'react-native-youtube';
 import axios from 'axios';
 import {Colors} from '@themes';
-import {ItemComponent} from '@components';
+import {ItemComponent, AvatarComponent} from '@components';
 
 export interface Video {
   description: string;
@@ -48,12 +48,13 @@ export const YouTubeScreen: React.FunctionComponent = () => {
   };
   return (
     <View style={styles.container}>
-      <YouTube videoId={getYoutubeId(videoId)} style={styles.video} />
+      {/* <YouTube videoId={getYoutubeId(videoId)} style={styles.video} />
       <FlatList
         data={videos}
         renderItem={({item, index}) => renderVideoItem(item, index)}
         showsVerticalScrollIndicator={false}
-      />
+      /> */}
+      <AvatarComponent image={''} name={'Vo Ba Hung'} />
     </View>
   );
 };
