@@ -48,13 +48,13 @@ export const YouTubeScreen: React.FunctionComponent = () => {
   };
   return (
     <View style={styles.container}>
-      {/* <YouTube videoId={getYoutubeId(videoId)} style={styles.video} />
+      <YouTube videoId={getYoutubeId(videoId)} style={styles.video} />
       <FlatList
         data={videos}
         renderItem={({item, index}) => renderVideoItem(item, index)}
         showsVerticalScrollIndicator={false}
-      /> */}
-      <AvatarComponent image={''} name={'Vo Ba Hung'} />
+      />
+      {/* <AvatarComponent image={''} name={'Vo Ba Hung'} /> */}
     </View>
   );
 };

@@ -13,7 +13,6 @@ export default StyleSheet.create({
     width: 340,
     borderRadius: 13,
     alignItems: 'center',
-    marginTop: 71,
     paddingVertical: 30,
   },
   textSignIn: {
