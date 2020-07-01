@@ -15,76 +15,87 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {LoginScreen, YouTubeScreen} from '@screens';
+import {
+  LoginScreen,
+  YouTubeScreen,
+  YouTubeRouterParams,
+  YouTubeRouteParams,
+} from '@screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Screens} from '@config';
 
-const MainStack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+export type MainStackRoute = {
+  [Screens.LoginScreen]: undefined;
+  [Screens.YouTubeScreen]: YouTubeRouteParams;
+};
 
-const HomeStack = createStackNavigator();
-const YouTubeStack = createStackNavigator();
-const FlightStack = createStackNavigator();
-const ProfileStack = createStackNavigator();
-const AuthStack = createStackNavigator();
+const MainStack = createStackNavigator<MainStackRoute>();
 
-function HomeNavigator() {
-  return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name={Screens.HomeScreen} component={YouTubeScreen} />
-    </HomeStack.Navigator>
-  );
-}
+// const Tab = createBottomTabNavigator();
 
-function YouTubeNavigator() {
-  return (
-    <YouTubeStack.Navigator initialRouteName={Screens.HomeScreen}>
-      <HomeStack.Screen name={Screens.HomeScreen} component={YouTubeScreen} />
-    </YouTubeStack.Navigator>
-  );
-}
+// const HomeStack = createStackNavigator();
+// const YouTubeStack = createStackNavigator();
+// const FlightStack = createStackNavigator();
+// const ProfileStack = createStackNavigator();
+// const AuthStack = createStackNavigator();
 
-function FlightNavigator() {
-  return (
-    <FlightStack.Navigator initialRouteName={Screens.HomeScreen}>
-      <HomeStack.Screen name={Screens.HomeScreen} component={YouTubeScreen} />
-    </FlightStack.Navigator>
-  );
-}
+// function HomeNavigator() {
+//   return (
+//     <HomeStack.Navigator>
+//       <HomeStack.Screen name={Screens.HomeScreen} component={YouTubeScreen} />
+//     </HomeStack.Navigator>
+//   );
+// }
 
-function ProfileNavigator() {
-  return (
-    <ProfileStack.Navigator initialRouteName={Screens.HomeScreen}>
-      <HomeStack.Screen name={Screens.HomeScreen} component={YouTubeScreen} />
-    </ProfileStack.Navigator>
-  );
-}
+// function YouTubeNavigator() {
+//   return (
+//     <YouTubeStack.Navigator initialRouteName={Screens.HomeScreen}>
+//       <HomeStack.Screen name={Screens.HomeScreen} component={YouTubeScreen} />
+//     </YouTubeStack.Navigator>
+//   );
+// }
 
-function AuthNavigator() {
-  return (
-    <AuthStack.Navigator initialRouteName={Screens.LoginScreen}>
-      <HomeStack.Screen name={Screens.LoginScreen} component={LoginScreen} />
-    </AuthStack.Navigator>
-  );
-}
+// function FlightNavigator() {
+//   return (
+//     <FlightStack.Navigator initialRouteName={Screens.HomeScreen}>
+//       <HomeStack.Screen name={Screens.HomeScreen} component={YouTubeScreen} />
+//     </FlightStack.Navigator>
+//   );
+// }
 
-function MyTabs() {
-  return (
-    <Tab.Navigator initialRouteName={Screens.HomeNavigator}>
-      <Tab.Screen name={Screens.HomeNavigator} component={HomeNavigator} />
-      <Tab.Screen
-        name={Screens.YouTubeNavigator}
-        component={YouTubeNavigator}
-      />
-      <Tab.Screen name={Screens.FlightNavigator} component={FlightNavigator} />
-      <Tab.Screen
-        name={Screens.ProfileNavigator}
-        component={ProfileNavigator}
-      />
-    </Tab.Navigator>
-  );
-}
+// function ProfileNavigator() {
+//   return (
+//     <ProfileStack.Navigator initialRouteName={Screens.HomeScreen}>
+//       <HomeStack.Screen name={Screens.HomeScreen} component={YouTubeScreen} />
+//     </ProfileStack.Navigator>
+//   );
+// }
+
+// function AuthNavigator() {
+//   return (
+//     <AuthStack.Navigator initialRouteName={Screens.LoginScreen}>
+//       <HomeStack.Screen name={Screens.LoginScreen} component={LoginScreen} />
+//     </AuthStack.Navigator>
+//   );
+// }
+
+// function MyTabs() {
+//   return (
+//     <Tab.Navigator initialRouteName={Screens.HomeNavigator}>
+//       <Tab.Screen name={Screens.HomeNavigator} component={HomeNavigator} />
+//       <Tab.Screen
+//         name={Screens.YouTubeNavigator}
+//         component={YouTubeNavigator}
+//       />
+//       <Tab.Screen name={Screens.FlightNavigator} component={FlightNavigator} />
+//       <Tab.Screen
+//         name={Screens.ProfileNavigator}
+//         component={ProfileNavigator}
+//       />
+//     </Tab.Navigator>
+//   );
+// }
 
 function App() {
   return (
@@ -96,10 +107,13 @@ function App() {
             headerShown: false,
           }}>
           <MainStack.Screen
-            name={Screens.AuthNavigator}
-            component={AuthNavigator}
+            name={Screens.LoginScreen}
+            component={LoginScreen}
           />
-          <MainStack.Screen name={Screens.MyTabs} component={MyTabs} />
+          <MainStack.Screen
+            name={Screens.YouTubeScreen}
+            component={YouTubeScreen}
+          />
         </MainStack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

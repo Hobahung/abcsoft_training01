@@ -5,6 +5,25 @@ import YouTube from 'react-native-youtube';
 import axios from 'axios';
 import {Colors} from '@themes';
 import {ItemComponent, AvatarComponent} from '@components';
+import {NativeStackNavigationProp} from 'react-native-screens/native-stack/types';
+import {ParamListBase, RouteProp} from '@react-navigation/native';
+import {Screens} from '@config';
+import {MainStackRoute} from 'App';
+
+export interface YouTubeRouteParams {
+  name: string;
+}
+
+type RoutePropCustom = RouteProp<MainStackRoute, Screens.YouTubeScreen>;
+
+export interface YouTubeRouterParams {
+  test: string;
+}
+
+export interface LoginScreenProps {
+  navigation: NativeStackNavigationProp<ParamListBase>;
+  route: RoutePropCustom;
+}
 
 export interface Video {
   description: string;
@@ -13,13 +32,16 @@ export interface Video {
   imageUrl: string;
   name: string;
 }
-export const YouTubeScreen: React.FunctionComponent = () => {
+export const YouTubeScreen: React.FunctionComponent<LoginScreenProps> = (
+  props: LoginScreenProps,
+) => {
   const [videos, setVideos] = useState([]);
   const [videoId, setVideoId] = useState('');
   useEffect(() => {
     getData();
   }, []);
   const getData = () => {
+    console.log(props.route.params.name);
     axios({
       method: 'get',
       url: 'https://5eec5c4b5e298b0016b69a76.mockapi.io/abcsoft/video',

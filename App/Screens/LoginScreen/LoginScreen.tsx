@@ -4,7 +4,7 @@ import styles from './LoginScreenStyle';
 import {Colors} from '@themes';
 import {ParamListBase} from '@react-navigation/native';
 import {NativeStackNavigationProp} from 'react-native-screens/native-stack/types';
-import { Screens } from '@config';
+import {Screens} from '@config';
 
 export interface LoginScreenProps {
   navigation: NativeStackNavigationProp<ParamListBase>;
@@ -16,7 +16,7 @@ export const LoginScreen: React.FunctionComponent<LoginScreenProps> = (
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const {navigation} = props
+  const {navigation} = props;
   return (
     <View style={{flex: 1}}>
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -48,7 +48,26 @@ export const LoginScreen: React.FunctionComponent<LoginScreenProps> = (
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonSubmit}
-            onPress={() => {navigation.navigate(Screens.MyTabs)}}>
+            onPress={() => {
+              // Cung stack
+
+              navigation.navigate(Screens.YouTubeScreen, {
+                name: 'Ho Ba Hung',
+              });
+
+              // Khac stack
+
+              // navigation.navigate(Screens.ProfileNavigator, {
+              //   screens: Screens.ProfileScreen,
+              //   params: {
+              //     name: 'Ho Ba Hung',
+              //     test: {
+              //       abc: 'abc',
+              //       x: 'x',
+              //     },
+              //   },
+              // });
+            }}>
             <Text
               style={{color: Colors.White, fontSize: 18, fontWeight: 'bold'}}>
               Sign in
